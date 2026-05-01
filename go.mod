@@ -1,4 +1,4 @@
-module github.com/shikho/copytab
+module github.com/NaheedRayan/copytab
 
 go 1.25.0
 

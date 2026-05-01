@@ -6,10 +6,10 @@ import (
 	"os"
 	"strings"
 
-	"github.com/shikho/copytab/internal/clipboard"
-	"github.com/shikho/copytab/internal/detect"
-	"github.com/shikho/copytab/internal/jetbrains"
-	"github.com/shikho/copytab/internal/vscode"
+	"github.com/NaheedRayan/copytab/internal/clipboard"
+	"github.com/NaheedRayan/copytab/internal/detect"
+	"github.com/NaheedRayan/copytab/internal/jetbrains"
+	"github.com/NaheedRayan/copytab/internal/vscode"
 )
 
 var supportedIDEs = []string{"vscode", "cursor", "goland", "intellij", "pycharm", "webstorm", "datagrip"}
