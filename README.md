@@ -13,6 +13,8 @@ CLI tool that copies all open IDE tabs to your clipboard on macOS.
 go install github.com/NaheedRayan/copytab@latest
 ```
 
+
+
 Make sure `~/go/bin` is in your `PATH`:
 
 ```bash
