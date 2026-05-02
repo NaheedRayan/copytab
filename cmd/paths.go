@@ -2,9 +2,11 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 	"strings"
 
 	"github.com/NaheedRayan/copytab/internal/clipboard"
+	"github.com/NaheedRayan/copytab/internal/tree"
 	"github.com/spf13/cobra"
 )
 
@@ -25,6 +27,15 @@ func runCopyPaths(cmd *cobra.Command, args []string) error {
 	}
 
 	output := strings.Join(allPaths, "\n")
+
+	if treeFlag {
+		wd, err := os.Getwd()
+		if err != nil {
+			return fmt.Errorf("could not determine working directory: %w", err)
+		}
+		treeOutput := tree.BuildTree(wd)
+		output = "=== Folder Structure ===\n" + treeOutput + "\n" + output
+	}
 
 	if printFlag {
 		if output != "" {

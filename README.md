@@ -68,6 +68,7 @@ copytab
 ```bash
 copytab                         # Auto-detect IDE, copy file contents to clipboard
 copytab paths                   # Copy file paths instead of contents
+copytab --tree                  # Include folder structure tree in the output
 copytab --ide=vscode            # Copy VS Code tab contents
 copytab --ide=goland            # Copy GoLand tab contents
 copytab --ide=all               # Collect from all IDEs, copy contents
@@ -86,6 +87,7 @@ copytab --print                 # Print to stdout instead of clipboard
 | Flag | Default | Description |
 |------|---------|-------------|
 | `--ide` | `detect` | IDE to extract tabs from: `detect`, `all`, or a specific IDE name |
+| `--tree` | `false` | Include folder structure tree in the output (respects `.gitignore`) |
 | `--print` | `false` | Print to stdout instead of copying to clipboard |
 
 ### IDE names
@@ -114,6 +116,7 @@ Run directly from the repo without installing:
 go run . --print
 go run . --ide=goland --print
 go run . paths --print
+go run . --tree --print
 ```
 
 Build a binary:

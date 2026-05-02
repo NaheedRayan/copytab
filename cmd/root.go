@@ -7,12 +7,14 @@ import (
 
 	"github.com/NaheedRayan/copytab/internal/clipboard"
 	"github.com/NaheedRayan/copytab/internal/content"
+	"github.com/NaheedRayan/copytab/internal/tree"
 	"github.com/spf13/cobra"
 )
 
 var (
 	ideFlag   string
 	printFlag bool
+	treeFlag  bool
 )
 
 var rootCmd = &cobra.Command{
@@ -27,6 +29,8 @@ func init() {
 		"IDE to extract tabs from: detect, all, "+strings.Join(supportedIDEs, ", "))
 	rootCmd.PersistentFlags().BoolVar(&printFlag, "print", false,
 		"Print to stdout instead of copying to clipboard")
+	rootCmd.PersistentFlags().BoolVar(&treeFlag, "tree", false,
+		"Include folder structure tree in the output")
 }
 
 func runCopyContents(cmd *cobra.Command, args []string) error {
@@ -36,6 +40,15 @@ func runCopyContents(cmd *cobra.Command, args []string) error {
 	}
 
 	output := content.BuildOutput(allPaths)
+
+	if treeFlag {
+		wd, err := os.Getwd()
+		if err != nil {
+			return fmt.Errorf("could not determine working directory: %w", err)
+		}
+		treeOutput := tree.BuildTree(wd)
+		output = "=== Folder Structure ===\n" + treeOutput + "\n" + output
+	}
 
 	if printFlag {
 		if output != "" {
