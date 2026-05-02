@@ -14,6 +14,8 @@ So I exported the conversation and ran it through a tokenizer — the actual con
 
 This isn't a bug. LLM APIs charge per **API call**, not per unique conversation content. Every time you send a message in Claude Code (or any coding agent), the **entire conversation history** is re-sent to the model — your code, tool results, system prompts, everything.
 
+> **33K** tokens of actual content → **3.8M+** tokens billed. That's a **100x** markup.
+
 ```mermaid
 xychart-beta
   title "What you pay for, turn by turn"
