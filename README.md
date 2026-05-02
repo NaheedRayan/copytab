@@ -34,7 +34,7 @@ This is by design — it's how stateless APIs work. The longer the conversation,
 Instead of letting an agent wander through your codebase across dozens of turns, grab the files you care about and give the model exactly what it needs in **one shot**. Fewer turns, less token waste, more control over what you're paying for.
 
 ```bash
-copytab --content    # Grab file contents from your open tabs
+copytab             # Grab file contents from your open tabs
 # Paste into your LLM. One message. Done.
 ```
 
@@ -66,20 +66,26 @@ copytab
 ## Quick Start
 
 ```bash
-copytab                         # Auto-detect frontmost IDE, copy tab paths to clipboard
-copytab --ide=vscode            # Copy VS Code tab paths
-copytab --ide=goland            # Copy GoLand tab paths
-copytab --ide=all               # Collect from all IDEs, deduplicate, copy to clipboard
-copytab --content               # Copy file contents instead of file paths
+copytab                         # Auto-detect IDE, copy file contents to clipboard
+copytab paths                   # Copy file paths instead of contents
+copytab --ide=vscode            # Copy VS Code tab contents
+copytab --ide=goland            # Copy GoLand tab contents
+copytab --ide=all               # Collect from all IDEs, copy contents
 copytab --print                 # Print to stdout instead of clipboard
 ```
+
+## Commands
+
+| Command | Description |
+|---------|-------------|
+| `copytab` | Copy file contents from open tabs (default) |
+| `copytab paths` | Copy file paths from open tabs |
 
 ## Flags
 
 | Flag | Default | Description |
 |------|---------|-------------|
 | `--ide` | `detect` | IDE to extract tabs from: `detect`, `all`, or a specific IDE name |
-| `--content` | `false` | Copy file contents instead of file paths |
 | `--print` | `false` | Print to stdout instead of copying to clipboard |
 
 ### IDE names
@@ -107,7 +113,7 @@ Run directly from the repo without installing:
 ```bash
 go run . --print
 go run . --ide=goland --print
-go run . --ide=goland --content --print
+go run . paths --print
 ```
 
 Build a binary:

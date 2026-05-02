@@ -30,7 +30,16 @@ func FrontmostApp() (string, error) {
 
 // IDEFromApp maps a macOS application name to a standardized IDE identifier.
 // Returns the IDE name and true if recognized, empty string and false otherwise.
+// Performs a case-insensitive fallback if the exact match fails.
 func IDEFromApp(appName string) (string, bool) {
-	ide, ok := AppToIDE[appName]
-	return ide, ok
+	if ide, ok := AppToIDE[appName]; ok {
+		return ide, true
+	}
+	lower := strings.ToLower(appName)
+	for app, ide := range AppToIDE {
+		if strings.ToLower(app) == lower {
+			return ide, true
+		}
+	}
+	return "", false
 }
