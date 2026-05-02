@@ -16,11 +16,11 @@ This isn't a bug. LLM APIs charge per **API call**, not per unique conversation 
 
 ```mermaid
 xychart-beta
-  title "Tokens billed vs unique content across conversation turns"
-  x-axis "Turn" [1, 5, 10, 15, 20, 25, 30]
+  title "What you pay for, turn by turn"
+  x-axis "Conversation turn" [1, 5, 15, 30]
   y-axis "Tokens (K)" 0 --> 1200
-  bar [10, 55, 160, 330, 560, 850, 1200]
-  line [10, 10, 10, 10, 10, 10, 10]
+  bar [10, 55, 330, 1200]
+  line [10, 10, 10, 10]
 ```
 
 Each turn re-sends everything that came before it. By turn 30, you've paid for the same tokens over and over — the cost compounds quadratically while your actual unique content stays flat.
