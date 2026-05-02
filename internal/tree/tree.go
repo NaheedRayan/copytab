@@ -171,11 +171,21 @@ func walkDir(root, prefix string, depth int, ignores []gitignore, sb *strings.Bu
 	all := append(dirs, files...)
 	for i, entry := range all {
 		isLast := i == len(all)-1
-		connector := "├── "
+		// connector := "├── "
+		// if isLast {
+		// 	connector = "└── "
+		// }
+		// childPrefix := "│   "
+		// if isLast {
+		// 	childPrefix = "    "
+		// }
+
+		// With this ASCII-safe version:
+		connector := "|-- "
 		if isLast {
-			connector = "└── "
+			connector = "`-- " // or "\\-- "
 		}
-		childPrefix := "│   "
+		childPrefix := "|   "
 		if isLast {
 			childPrefix = "    "
 		}
