@@ -1,8 +1,19 @@
-# copytab
+<div align="center">
 
-One-shot your LLM with only the content that matters.
+# COPYTAB 📝📝📝
+
+**One-shot your LLM with only the content that matters.**
 
 CLI tool that copies all open IDE tabs to your clipboard on macOS.
+
+[![Go Reference](https://pkg.go.dev/badge/github.com/NaheedRayan/copytab.svg)](https://pkg.go.dev/github.com/NaheedRayan/copytab)
+[![Go Report Card](https://goreportcard.com/badge/github.com/NaheedRayan/copytab)](https://goreportcard.com/report/github.com/NaheedRayan/copytab)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Discord](https://img.shields.io/discord/123456789012345678?color=blue&label=Chat%20with%20me&logo=discord)](https://discord.gg/kUQhvbWSQ)
+
+<img src="assets/copytab.png" alt="copytab demo" width="600">
+
+</div>
 
 ## Why
 
@@ -16,14 +27,7 @@ This isn't a bug. LLM APIs charge per **API call**, not per unique conversation 
 
 > **33K** tokens of actual content → **3.8M+** tokens billed. That's a **100x** markup.
 
-```mermaid
-xychart-beta
-  title "What you pay for, turn by turn"
-  x-axis "Conversation turn" [1, 5, 15, 30]
-  y-axis "Tokens (K)" 0 --> 1200
-  bar [10, 55, 330, 1200]
-  line [10, 10, 10, 10]
-```
+[![Token compounding](/assets/image.png)](/assets/image.png)
 
 Each turn re-sends everything that came before it. By turn 30, you've paid for the same tokens over and over — the cost compounds quadratically while your actual unique content stays flat.
 
